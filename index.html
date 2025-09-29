@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afforadable Housing Hub </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Premium 3D Color Theme */
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --text: #f0f0f0;
+            --text-secondary: #b8b8b8;
+            --card-bg: #22223b;
+            --input-bg: #2d3047;
+            --success: #4cc9f0;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--highlight);
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--secondary);
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--highlight);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--highlight);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-buttons button {
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        .auth-buttons button:hover {
+            background-color: var(--highlight);
+            transform: translateY(-2px);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info span {
+            margin-right: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--highlight);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(22, 33, 62, 0.8), rgba(22, 33, 62, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+            animation: fadeIn 1.5s ease;
+        }
+
+        .search-bar {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            animation: fadeIn 2s ease;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            background-color: var(--input-bg);
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            background-color: var(--highlight);
+            color: white;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            font-size: 1.2rem;
+        }
+
+        .search-bar button:hover {
+            background-color: #ff2e4f;
+        }
+
+        /* Toggle Switch */
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .toggle-switch {
+            display: flex;
+            background-color: var(--card-bg);
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+
+        .toggle-option {
+            padding: 10px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-option.active {
+            background-color: var(--highlight);
+        }
+
+        /* Featured Listings */
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin: 3rem 0 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--highlight);
+            border-radius: 2px;
+        }
+
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Property Card */
+        .property-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .property-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .property-details {
+            padding: 1.5rem;
+        }
+
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+        }
+
+        .property-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-location {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .property-location i {
+            margin-right: 5px;
+        }
+
+        .property-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .property-features span {
+            display: flex;
+            align-items: center;
+        }
+
+        .property-features i {
+            margin-right: 5px;
+            color: var(--highlight);
+        }
+
+        .view-btn {
+            background-color: var(--accent);
+            color: var(--text);
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .view-btn:hover {
+            background-color: var(--highlight);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalAppear 0.3s ease;
+        }
+
+        @keyframes modalAppear {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-modal {
+            background: none;
+            color: var(--text);
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-images {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            height: 300px;
+        }
+
+        .modal-main-image {
+            grid-row: span 2;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .modal-secondary-image {
+            height: 145px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .owner-info {
+            background-color: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .contact-btn {
+            flex: 1;
+            padding: 0.7rem;
+            border-radius: 4px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-btn i {
+            margin-right: 5px;
+        }
+
+        .call-btn {
+            background-color: var(--success);
+        }
+
+        .email-btn {
+            background-color: var(--accent);
+        }
+
+        .copy-btn {
+            background-color: var(--highlight);
+        }
+
+        /* Filter Sidebar */
+        .filters-sidebar {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--highlight);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-option {
+            background-color: var(--secondary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-option.active {
+            background-color: var(--highlight);
+        }
+
+        .price-range {
+            display: flex;
+            gap: 10px;
+        }
+
+        .price-range input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--input-bg);
+            color: var(--text);
+        }
+
+        /* Forms */
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--input-bg);
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            background-color: var(--highlight);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #ff2e4f;
+            transform: translateY(-2px);
+        }
+
+        /* Authentication Forms */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-tab.active {
+            background-color: var(--highlight);
+        }
+
+        .auth-tab:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .auth-tab:last-child {
+            border-radius: 0 4px 4px 0;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--highlight);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--accent);
+            color: var(--text-secondary);   
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .nav-links {
+                margin: 1rem 0;
+            }
+
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .search-bar input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+
+            .search-bar button {
+                border-radius: 4px;
+                padding: 1rem;
+            }
+
+            .modal-details {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-images {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .modal-main-image {
+                grid-row: auto;
+                height: 200px;
+            }
+
+            .modal-secondary-image {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-home"></i>
+                    AFFORADABLE HOUSING HUB
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#" class="active" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="listings">Listings</a></li>
+                    <li><a href="#" data-page="add-property">Add Property</a></li>
+                </ul>
+                <div class="user-section">
+                    <div class="auth-buttons">
+                        <button id="login-btn">Login</button>
+                        <button id="register-btn">Register</button>
+                    </div>
+                    <div class="user-info" style="display: none;">
+                        <span>Welcome, <span id="user-name">User</span></span>
+                        <div class="user-avatar" id="user-avatar">U</div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home-page" class="page active">
+        <div class="hero">
+            <div class="container">
+                <h1>Find Your Dream Home Without Brokerage</h1>
+                <p>AFFORADABLE HOUSING HUB connects property owners directly with buyers and tenants. Browse thousands of properties with no middlemen involved.</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search by city, title, or owner...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="toggle-container">
+                <div class="toggle-switch">
+                    <div class="toggle-option active" data-type="rent">For Rent</div>
+                    <div class="toggle-option" data-type="buy">For Sale</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Featured Properties</h2>
+            <div class="listings-grid" id="featured-listings">
+                <!-- Featured listings will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Listings Page -->
+    <section id="listings-page" class="page">
+        <div class="container">
+            <h2 class="section-title">All Properties</h2>
+            
+            <div class="filters-sidebar">
+                <div class="filter-group">
+                    <h3 class="filter-title">Location</h3>
+                    <div class="filter-options" id="location-filters">
+                        <!-- Location filters will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3 class="filter-title">Price Range</h3>
+                    <div class="price-range">
+                        <input type="number" placeholder="Min Price" id="min-price">
+                        <input type="number" placeholder="Max Price" id="max-price">
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3 class="filter-title">Bedrooms</h3>
+                    <div class="filter-options" id="bedroom-filters">
+                        <div class="filter-option active" data-bedrooms="any">Any</div>
+                        <div class="filter-option" data-bedrooms="1">1</div>
+                        <div class="filter-option" data-bedrooms="2">2</div>
+                        <div class="filter-option" data-bedrooms="3">3</div>
+                        <div class="filter-option" data-bedrooms="4">4+</div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3 class="filter-title">Amenities</h3>
+                    <div class="filter-options" id="amenity-filters">
+                        <div class="filter-option" data-amenity="parking">Parking</div>
+                        <div class="filter-option" data-amenity="gym">Gym</div>
+                        <div class="filter-option" data-amenity="pool">Pool</div>
+                        <div class="filter-option" data-amenity="lift">Lift</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="listings-grid" id="all-listings">
+                <!-- All listings will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Property Page -->
+    <section id="add-property-page" class="page">
+        <div class="container">
+            <h2 class="section-title">Add Your Property</h2>
+            
+            <div class="form-container">
+                <form id="property-form">
+                    <div class="form-group">
+                        <label for="property-title">Property Title</label>
+                        <input type="text" id="property-title" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property-type">Property Type</label>
+                        <select id="property-type" class="form-control" required>
+                            <option value="">Select Type</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="house">House</option>
+                            <option value="villa">Villa</option>
+                            <option value="commercial">Commercial</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transaction-type">Transaction Type</label>
+                        <select id="transaction-type" class="form-control" required>
+                            <option value="">Select Type</option>
+                            <option value="rent">For Rent</option>
+                            <option value="sale">For Sale</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property-price">Price</label>
+                        <input type="number" id="property-price" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property-bedrooms">Bedrooms</label>
+                        <input type="number" id="property-bedrooms" class="form-control" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property-city">City</label>
+                        <input type="text" id="property-city" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property-amenities">Amenities (comma separated)</label>
+                        <input type="text" id="property-amenities" class="form-control" placeholder="e.g., Parking, Gym, Pool">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property-description">Description</label>
+                        <textarea id="property-description" class="form-control" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="owner-name">Your Name</label>
+                        <input type="text" id="owner-name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="owner-phone">Phone Number</label>
+                        <input type="tel" id="owner-phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="owner-email">Email</label>
+                        <input type="email" id="owner-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property-image">Image URL</label>
+                        <input type="url" id="property-image" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Add Property</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authentication Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Authentication</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="login">Login</div>
+                    <div class="auth-tab" data-tab="register">Register</div>
+                </div>
+                
+                <form id="login-form" class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+                
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+                        <input type="text" id="register-name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-phone">Phone Number</label>
+                        <input type="tel" id="register-phone" class="form-control" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Property Details Modal -->
+    <div id="property-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-property-title">Property Title</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img src="" alt="Property Image" class="modal-main-image" id="modal-main-image">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Property Image" class="modal-secondary-image">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Property Image" class="modal-secondary-image">
+                </div>
+                
+                <div class="modal-details">
+                    <div>
+                        <h3>Description</h3>
+                        <p id="modal-property-description">Property description goes here...</p>
+                        
+                        <h3>Details</h3>
+                        <div class="property-features">
+                            <span><i class="fas fa-bed"></i> <span id="modal-bedrooms">3</span> Bedrooms</span>
+                            <span><i class="fas fa-bath"></i> 2 Bathrooms</span>
+                            <span><i class="fas fa-ruler-combined"></i> 1500 sq.ft.</span>
+                        </div>
+                        
+                        <div class="property-features" id="modal-amenities">
+                            <!-- Amenities will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="owner-info">
+                        <h3>Owner Information</h3>
+                        <p><strong>Name:</strong> <span id="modal-owner-name">John Doe</span></p>
+                        <p><strong>Phone:</strong> <span id="modal-owner-phone">+1 234 567 8900</span></p>
+                        <p><strong>Email:</strong> <span id="modal-owner-email">john.doe@example.com</span></p>
+                        
+                        <div class="contact-buttons">
+                            <button class="contact-btn call-btn"><i class="fas fa-phone"></i> Call</button>
+                            <button class="contact-btn email-btn"><i class="fas fa-envelope"></i> Email</button>
+                            <button class="contact-btn copy-btn"><i class="fas fa-copy"></i> Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AFFORADABLE HOUSING HUB</h3>
+                    <p>Connecting property owners directly with buyers and tenants. No brokers, no commissions.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Properties</a></li>
+                        <li><a href="#">Add Property</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Property St, City</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope"></i> info@afforadblehousinghub.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 NoMiddle. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample property data
+        const sampleProperties = [
+            {
+                id: 1,
+                title: "Luxury Apartment in Downtown",
+                type: "apartment",
+                transaction: "rent",
+                price: 2500,
+                bedrooms: 3,
+                city: "New York",
+                amenities: ["Parking", "Gym", "Lift"],
+                description: "Beautiful luxury apartment in the heart of downtown with amazing views and modern amenities.",
+                owner: {
+                    name: "John Smith",
+                    phone: "+1 234 567 8901",
+                    email: "john.smith@example.com"
+                },
+                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                featured: true,
+                dateAdded: new Date(2023, 5, 15)
+            },
+            {
+                id: 2,
+                title: "Modern Villa with Pool",
+                type: "villa",
+                transaction: "sale",
+                price: 750000,
+                bedrooms: 4,
+                city: "Los Angeles",
+                amenities: ["Parking", "Pool", "Gym"],
+                description: "Stunning modern villa with a private pool, spacious rooms, and premium finishes throughout.",
+                owner: {
+                    name: "Sarah Johnson",
+                    phone: "+1 234 567 8902",
+                    email: "sarah.j@example.com"
+                },
+                image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                featured: true,
+                dateAdded: new Date(2023, 4, 20)
+            },
+            {
+                id: 3,
+                title: "Cozy Family House",
+                type: "house",
+                transaction: "sale",
+                price: 450000,
+                bedrooms: 3,
+                city: "Chicago",
+                amenities: ["Parking", "Garden"],
+                description: "Charming family home in a quiet neighborhood with a beautiful garden and updated kitchen.",
+                owner: {
+                    name: "Michael Brown",
+                    phone: "+1 234 567 8903",
+                    email: "m.brown@example.com"
+                },
+                image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                featured: true,
+                dateAdded: new Date(2023, 6, 5)
+            },
+            {
+                id: 4,
+                title: "Studio Apartment near University",
+                type: "apartment",
+                transaction: "rent",
+                price: 1200,
+                bedrooms: 1,
+                city: "Boston",
+                amenities: ["Lift", "Gym"],
+                description: "Compact studio apartment perfect for students, located just minutes from the university campus.",
+                owner: {
+                    name: "Emily Davis",
+                    phone: "+1 234 567 8904",
+                    email: "emily.d@example.com"
+                },
+                image: "https://images.unsplash.com/
